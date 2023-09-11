@@ -16,11 +16,11 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
   const router = useRouter();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    
     setChecked(event.target.checked);
     handleMakerd()
   };
 
+  // for function close and open modal
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
@@ -29,6 +29,7 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
     router.push(`editTask/${todoData._id}`);
   }
 
+  // for delete task
   const handleDelete = async () => {
     try {
      
@@ -46,7 +47,7 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
   }
 
  
-
+// for change task status 
   const handleMakerd = async () => {
     try {
       await axios.put(`http://localhost:8000/api/v1/updatetodo/${todoData?._id}`, {
@@ -110,7 +111,7 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
             <AiOutlineDelete color="#FFDDD2" />
           </span>
         </div>
-          </div>
+      </div>
           <ContentModeal open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} contentData={todoData?.description} />
     </div>
   );

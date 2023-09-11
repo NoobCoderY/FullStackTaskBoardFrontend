@@ -18,6 +18,7 @@ const CompletedTasks = () => {
     },
   ]);
 
+  //function for find  get allTodo
   const getTodos = async () => {
     try {
       await axios
@@ -29,7 +30,7 @@ const CompletedTasks = () => {
       return toast.error(error.response.data.err);
     }
   };
-
+ //after delete and marked complete ,marked uncomplete update todolist
   React.useEffect(() => {
     getTodos();
   }, [deleteTask,markedTask]);
@@ -47,6 +48,7 @@ const CompletedTasks = () => {
 
           <div className="mt-[2rem] flex flex-wrap gap-[2rem] ">
             {allTodos?.map((allTodosData, index) => {
+              // for only show completed tasks
               if (allTodosData.status) {
                 return (
                   <div className="basis-[100%]  md:basis-[40%] lg:basis-[30%] sm:basis-[46%] m-[auto] sm:m-[0] md:m-0 lg:m-0" key={`${allTodos}+${index}`}>

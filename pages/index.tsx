@@ -32,15 +32,18 @@ export default function Home() {
       return toast.error(error.response.data.err);
     }
   };
-
+ 
+  //after delete and marked complete ,marked uncomplete update todolist
   React.useEffect(() => {
     getTodos();
   }, [deleteTask,markedTask]);
 
+  //for filter according to search 
   const handleSearch = () => {
     const dummyarr=allTodos.filter((todoData) =>
     todoData.title.toLowerCase().includes(search)
     );
+    // sort according to duedate
     return dateSort(dummyarr)
     
   };
@@ -69,7 +72,8 @@ export default function Home() {
           </div>
         </div>
         <div className="mt-[2rem] flex flex-wrap gap-[2rem] ">
-          {handleSearch()?.map((allTodosData:TodoInterface, index:Number) => {
+          {handleSearch()?.map((allTodosData: TodoInterface, index: Number) => {
+             // for only show uncompleted tasks
             if (!allTodosData.status) {
               return (
                 <div className=" basis-[100%]  md:basis-[40%] lg:basis-[30%] sm:basis-[46%] m-[auto] sm:m-[0] md:m-0 lg:m-0" key={`${allTodos}+${index}`}>

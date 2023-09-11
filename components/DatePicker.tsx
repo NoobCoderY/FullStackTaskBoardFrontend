@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { DatePicker } from "@mui/x-date-pickers";
 import { TodoInterface } from "@/utils/compareDate";
 
+// custom datepicker
 const CustomDateField = styled(DatePicker)({
   "& .MuiOutlinedInput-root": {
     "&.Mui-focused fieldset": {
@@ -16,7 +17,6 @@ const CustomDateField = styled(DatePicker)({
       top:"-40px"
   }
 });
-
 
 interface TodoFormProps {
   settodoCreate: React.Dispatch<React.SetStateAction<TodoInterface>>;
@@ -30,7 +30,7 @@ export default function DateFieldValue({
   
   const [value, setValue] = React.useState<Date|null>(null);
   
-  
+  // for handle unsynchronous behaviour of useState
   const waitDateChange = (newValue: any) => {
     return new Promise<void>((resolve, reject) => {
       setValue(newValue?.$d);
@@ -38,12 +38,7 @@ export default function DateFieldValue({
     });
   };
 
-  // React.useEffect(() => {
-  //   const changeDate = changeDateFormat(todoCreate.dueDate)
-  //   console.log(changeDate);
-    
-  //   setValue(changeDate)
-  // },[todoCreate])
+  
   React.useEffect(() => {
     const inputDateString = `${value}`;
     
@@ -61,6 +56,7 @@ export default function DateFieldValue({
       dueDate: formattedDate,
     });
   }, [value]);
+
   const handleDate = async (newValue: any) => {
     await waitDateChange(newValue);
   };

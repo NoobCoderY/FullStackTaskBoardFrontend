@@ -22,6 +22,7 @@ const CustomTextField = styled(TextField)({
 const CreateTask = () => {
   const router = useRouter();
   const currentDate = new Date();
+  //useState for input field
   const [todoCreate, settodoCreate] = useState<TodoInterface>({
     title: "",
     dueDate: "",
@@ -29,6 +30,7 @@ const CreateTask = () => {
     status: false,
   });
 
+  // event handler function for all todoField
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -39,7 +41,7 @@ const CreateTask = () => {
     });
   };
 
-
+// function for form validation and add todo in database
   async function handleSubmit() {
     if (todoCreate.title.length < 7) {
       return toast.error("Please enter title more than 7 character");

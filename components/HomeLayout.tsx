@@ -8,7 +8,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { BsSearch, BsBorderAll } from "react-icons/bs";
 import { BiSolidDashboard } from "react-icons/bi";
 
-
+// interface for props
 interface HomelayoutProps {
   children: React.ReactNode;
 }
@@ -37,7 +37,7 @@ const sidebarMenuItems =
     },
   ]
 
-
+// function for common layout
 const HomeLayout: React.FC<HomelayoutProps> = (props) => {
   return (
     <>

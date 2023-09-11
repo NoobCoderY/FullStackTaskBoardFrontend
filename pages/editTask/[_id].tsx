@@ -22,7 +22,6 @@ const CustomTextField = styled(TextField)({
 });
 const EditTask = () => {
   const router = useRouter();
-  console.log(router.query._id);
   const currentDate = new Date();
   const [todoCreate, settodoCreate] = React.useState<TodoInterface>({
     title: "",
@@ -41,6 +40,7 @@ const EditTask = () => {
     });
   };
 
+//function for pre load data
   const getTodo = async () => {
     try {
       await axios
@@ -63,7 +63,8 @@ const EditTask = () => {
   React.useEffect(() => {
     getTodo();
   }, []);
-  
+    
+  // submit for final edit
   async function handleSubmit() {
     if (todoCreate.title.length < 7) {
       return toast.error("Please enter title more than 7 character");
