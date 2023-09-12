@@ -23,7 +23,7 @@ const AllTasks = () => {
   const getTodos = async () => {
     try {
       await axios
-        .get("http://localhost:8000/api/v1/getalltodos")
+        .get("https://taskdashboard2.onrender.com/api/v1/getalltodos")
         .then((data) => {
           setallTodos(data.data.todos);
         });

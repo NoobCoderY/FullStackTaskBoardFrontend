@@ -34,7 +34,7 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
   const handleDelete = async () => {
     try {
      
-      await axios.delete(`http://localhost:8000/api/v1/deletetodo/${todoData?._id}`, {
+      await axios.delete(`https://taskdashboard2.onrender.com/api/v1/deletetodo/${todoData?._id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -51,7 +51,7 @@ const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }
 // for change task status 
   const handleMakerd = async () => {
     try {
-      await axios.put(`http://localhost:8000/api/v1/updatetodo/${todoData?._id}`, {
+      await axios.put(`https://taskdashboard2.onrender.com/api/v1/updatetodo/${todoData?._id}`, {
         ...todoData,
         status:!todoData.status
       }, {

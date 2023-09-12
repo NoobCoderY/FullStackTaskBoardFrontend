@@ -44,7 +44,7 @@ const EditTask = () => {
   const getTodo = async () => {
     try {
       await axios
-        .get(`http://localhost:8000/api/v1/gettodo/${router?.query?._id}`)
+        .get(`https://taskdashboard2.onrender.com/api/v1/gettodo/${router?.query?._id}`)
         .then((data) => {
           console.log(data.data.todo);
           const { title, dueDate, description, status } = data.data.todo;
@@ -83,7 +83,7 @@ const EditTask = () => {
       try {
         await axios
           .put(
-            `http://localhost:8000/api/v1/updatetodo/${router?.query?._id}`,
+            `https://taskdashboard2.onrender.com/api/v1/updatetodo/${router?.query?._id}`,
             todoCreate,
             {
               headers: {
