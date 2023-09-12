@@ -72,6 +72,7 @@ export default function DateFieldValue({
           handleDate(newValue);
         }}
         className="w-full"
+        label="Enter date"
       />
     </LocalizationProvider>
   );
