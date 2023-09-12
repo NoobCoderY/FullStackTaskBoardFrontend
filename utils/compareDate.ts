@@ -23,21 +23,6 @@ const currentDate = new Date();
 } 
 }
 
-
-export const changeDateFormat = (dateString:string) => {
-    // const dateString = "9/30/2023";
-    console.log(dateString);
-    
-const parts = dateString.split('/');
-const year = parseInt(parts[2]);
-const month = parseInt(parts[0]) - 1; 
-const day = parseInt(parts[1]);
-
-    const dateObject = new Date(year, month, day);// Output: Sat Sep 30 2023 00:00:00 GMT+0000 (Coordinated Universal Time)
-    return dateObject
-
-}
-
 export const dateSort = (dates:any) => {  
       // Custom date comparison function
     function compareDates(date1: TodoInterface, date2: TodoInterface): number {
@@ -57,4 +42,6 @@ export const dateSort = (dates:any) => {
     return  dates.sort(compareDates);
       
 }
+
+
 

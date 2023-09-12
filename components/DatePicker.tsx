@@ -4,6 +4,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { styled } from "@mui/material/styles";
 import { DatePicker } from "@mui/x-date-pickers";
 import { TodoInterface } from "@/utils/compareDate";
+import dayjs from "dayjs";
 
 // custom datepicker
 const CustomDateField = styled(DatePicker)({
@@ -28,12 +29,12 @@ export default function DateFieldValue({
   todoCreate,
 }: TodoFormProps) {
   
-  const [value, setValue] = React.useState<Date|null>(null);
+  const [value, setValue] = React.useState<Date | null | any>(null);
   
   // for handle unsynchronous behaviour of useState
   const waitDateChange = (newValue: any) => {
     return new Promise<void>((resolve, reject) => {
-      setValue(newValue?.$d);
+      setValue(newValue);
       resolve();
     });
   };
@@ -41,21 +42,24 @@ export default function DateFieldValue({
   
   React.useEffect(() => {
     const inputDateString = `${value}`;
-    
     // Create a Date object from the input string
     const date = new Date(inputDateString);
-
     // Extract month, day, and year
     const month = date.getMonth() + 1; // Month is zero-based, so we add 1
     const day = date.getDate();
     const year = date.getFullYear();
     // Create the formatted date string in "mm/dd/yyyy" format
-    const formattedDate = `${month}/${day}/${year}`;
+    const formattedDate = `${month}/${day}/${year}`;  
     settodoCreate({
       ...todoCreate,
       dueDate: formattedDate,
     });
   }, [value]);
+
+//for prefill date value in edit component
+  React.useEffect(() => { 
+    setValue((dayjs(todoCreate.dueDate)))
+  },[todoCreate.dueDate])
 
   const handleDate = async (newValue: any) => {
     await waitDateChange(newValue);
@@ -68,6 +72,7 @@ export default function DateFieldValue({
           handleDate(newValue);
         }}
         className="w-full"
+        label="Enter Date"
       />
     </LocalizationProvider>
   );

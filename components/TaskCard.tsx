@@ -10,6 +10,7 @@ import ContentModeal from "../components/ContentModal";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+
 const TaskCard = ({ todoData,deleteTask,setdeleteTask,markedTask,setmarkedTask }: any) => {
   const [open, setOpen] = React.useState(false);
   const [checked, setChecked] = React.useState(todoData.status)

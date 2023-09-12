@@ -37,7 +37,7 @@ const CompletedTasks = () => {
   return (
     <>
       <HomeLayout>
-        <div className="bg-[#FFDDD2] px-[2rem] py-[2rem] h-full no-scrollbar">
+        <div className="bg-[#FFDDD2] px-[2rem] py-[2rem] h-full no-scrollbar overflow-y-scroll">
           <div className="flex justify-center ">
             <div className="border-b-[2px] border-solid border-[#006D77] ">
               <h1 className=" m-[auto] text-[1.3rem]  font-[700] text-[#006D77] leading-[40px]">
